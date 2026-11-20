@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alfonodes — Playground & Tools untuk Programmer</title>
+<meta name="description" content="Playground HTML/CSS/JS live dan kumpulan tools programmer gratis: JSON formatter, Base64, Regex tester, Hash, UUID, JWT decoder, dan lainnya. Oleh Alfonodes.">
+<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="logo" href="#top"><span class="logo-mark">&gt;_</span> alfonodes<span class="logo-dot">.cc.cd</span></a>
+    <nav class="nav">
+      <a href="#playground">Playground</a>
+      <a href="#tools">Tools</a>
+      <a href="https://github.com/Alfonova-Node" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap">
+    <h1>Playground &amp; Tools<br><span class="accent">untuk Programmer</span></h1>
+    <p class="hero-sub">Tulis HTML, CSS, dan JavaScript — lihat hasilnya langsung. Plus 12 tools gratis yang jalan sepenuhnya di browser kamu, tanpa server, tanpa data yang dikirim ke mana pun.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#playground">Mulai Ngoding ↓</a>
+      <a class="btn btn-ghost" href="#tools">Lihat Semua Tools</a>
+    </div>
+    <div class="hero-badges">
+      <span>⚡ Live preview</span><span>🔒 100% client-side</span><span>🆓 Gratis</span><span>📱 Responsif</span>
+    </div>
+  </section>
+
+  <!-- ============ PLAYGROUND ============ -->
+  <section id="playground" class="section wrap">
+    <div class="section-head">
+      <h2>🖥️ Live Playground</h2>
+      <p>HTML + CSS + JavaScript, preview otomatis setiap kali kamu mengetik.</p>
+    </div>
+
+    <div class="pg-toolbar">
+      <label>Template:
+        <select id="templateSelect">
+          <option value="hello">Hello World</option>
+          <option value="card">Kartu Profil</option>
+          <option value="button">Tombol Interaktif</option>
+          <option value="animation">Animasi CSS</option>
+          <option value="todo">Todo List (JS)</option>
+          <option value="blank">Kosong</option>
+        </select>
+      </label>
+      <div class="pg-actions">
+        <button class="btn btn-small btn-primary" id="runBtn">▶ Jalankan</button>
+        <button class="btn btn-small" id="copyCodeBtn">📋 Salin Kode</button>
+        <button class="btn btn-small" id="downloadBtn">⬇ Unduh .html</button>
+        <button class="btn btn-small" id="resetBtn">↺ Reset</button>
+      </div>
+    </div>
+
+    <div class="pg-grid">
+      <div class="editors">
+        <div class="editor-block">
+          <div class="editor-label"><span class="dot html-dot"></span> HTML</div>
+          <textarea id="htmlEditor" spellcheck="false" placeholder="<!-- Tulis HTML di sini -->"></textarea>
+        </div>
+        <div class="editor-block">
+          <div class="editor-label"><span class="dot css-dot"></span> CSS</div>
+          <textarea id="cssEditor" spellcheck="false" placeholder="/* Tulis CSS di sini */"></textarea>
+        </div>
+        <div class="editor-block">
+          <div class="editor-label"><span class="dot js-dot"></span> JavaScript</div>
+          <textarea id="jsEditor" spellcheck="false" placeholder="// Tulis JavaScript di sini"></textarea>
+        </div>
+      </div>
+      <div class="preview-col">
+        <div class="editor-label">👁️ Preview <span class="preview-note" id="runStatus">otomatis</span></div>
+        <iframe id="previewFrame" title="Preview" sandbox="allow-scripts"></iframe>
+        <div class="console-block">
+          <div class="editor-label">⌨️ Console <button class="btn btn-small" id="clearConsoleBtn">Bersihkan</button></div>
+          <div id="consoleOutput" class="console-output"><div class="console-line dim">// console.log() dan error dari kodemu muncul di sini</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TOOLS ============ -->
+  <section id="tools" class="section wrap">
+    <div class="section-head">
+      <h2>🧰 Tools Programmer</h2>
+      <p>Semua proses terjadi di browser kamu. Tidak ada data yang keluar dari perangkatmu.</p>
+    </div>
+
+    <div class="tools-grid">
+
+      <!-- JSON -->
+      <article class="tool-card" id="tool-json">
+        <h3>JSON Formatter</h3>
+        <p class="tool-desc">Rapikan, padatkan, dan validasi JSON.</p>
+        <textarea id="jsonInput" rows="5" spellcheck="false" placeholder='{"nama":"Sari","umur":21}'></textarea>
+        <div class="row">
+          <button class="btn btn-small btn-primary" data-action="json-format">Format</button>
+          <button class="btn btn-small" data-action="json-minify">Minify</button>
+          <button class="btn btn-small" data-action="json-validate">Validasi</button>
+          <button class="btn btn-small" data-action="copy" data-target="jsonOutput">Salin</button>
+        </div>
+        <pre id="jsonOutput" class="output"></pre>
+      </article>
+
+      <!-- Base64 -->
+      <article class="tool-card" id="tool-base64">
+        <h3>Base64 Encode / Decode</h3>
+        <p class="tool-desc">Ubah teks ke Base64 dan sebaliknya.</p>
+        <textarea id="b64Input" rows="5" spellcheck="false" placeholder="Tulis teks di sini..."></textarea>
+        <div class="row">
+          <button class="btn btn-small btn-primary" data-action="b64-encode">Encode →</button>
+          <button class="btn btn-small" data-action="b64-decode">← Decode</button>
+          <button class="btn btn-small" data-action="copy" data-target="b64Output">Salin</button>
+        </div>
+        <pre id="b64Output" class="output"></pre>
+      </article>
+
+      <!-- URL -->
+      <article class="tool-card" id="tool-url">
+        <h3>URL Encode / Decode</h3>
+        <p class="tool-desc">Encode karakter khusus URL dan sebaliknya.</p>
+        <textarea id="urlInput" rows="5" spellcheck="false" placeholder="https://contoh.com/cari?q=kopi susu&hal=1"></textarea>
+        <div class="row">
+          <button class="btn btn-small btn-primary" data-action="url-encode">Encode →</button>
+          <button class="btn btn-small" data-action="url-decode">← Decode</button>
+          <button class="btn btn-small" data-action="copy" data-target="urlOutput">Salin</button>
+        </div>
+        <pre id="urlOutput" class="output"></pre>
+      </article>
+
+      <!-- Regex -->
+      <article class="tool-card" id="tool-regex">
+        <h3>Regex Tester</h3>
+        <p class="tool-desc">Uji pola regular expression terhadap teks.</p>
+        <div class="row">
+          <input id="regexPattern" type="text" placeholder="Pola, contoh: \b\w+@\w+\.\w+\b" spellcheck="false">
+          <input id="regexFlags" type="text" value="g" placeholder="flags" class="flags-input" spellcheck="false">
+        </div>
+        <textarea id="regexText" rows="4" spellcheck="false" placeholder="Teks untuk diuji...&#10;contoh: hubungi sari@mail.com atau ibu@mail.id"></textarea>
+        <div class="row">
+          <button class="btn btn-small btn-primary" data-action="regex-test">Test</button>
+        </div>
+        <div id="regexOutput" class="output regex-output"></div>
+        <div id="regexMatches" class="matches"></div>
+      </article>
+
+      <!-- Color -->
+      <article class="tool-card" id="tool-color">
+        <h3>Color Converter</h3>
+        <p class="tool-desc">HEX ↔ RGB ↔ HSL, dengan color picker.</p>
+        <div class="row color-row">
+          <input id="colorPicker" type="color" value="#00d084">
+          <input id="colorHex" type="text" value="#00d084" spellcheck="false">
+          <div id="colorSwatch" class="swatch" style="background:#00d084"></div>
+        </div>
+        <div class="row">
+          <button class="btn btn-small btn-primary" data-action="color-convert">Konversi</button>
+          <button class="btn btn-small" data-action="copy" data-target="colorOutput">Salin</button>
+        </div>
+        <pre id="colorOutput" class="output">RGB: rgb(0, 208, 132)
+HSL: hsl(160, 100%, 41%)</pre>
+      </article>
+
+      <!-- Hash -->
+      <article class="tool-card" id="tool-hash">
+        <h3>Hash Generator</h3>
+        <p class="tool-desc">SHA-1 / SHA-256 / SHA-384 / SHA-512 dari teks.</p>
+        <textarea id="hashInput" rows="4" spellcheck="false" placeholder="Tulis teks yang mau di-hash..."></textarea>
+        <div class="row">
+          <select id="hashAlgo">
+            <option value="SHA-256">SHA-256</option>
+            <option value="SHA-1">SHA-1</option>
+            <option value="SHA-384">SHA-384</option>
+            <option value="SHA-512">SHA-512</option>
+          </select>
+          <button class="btn btn-small btn-primary" data-action="hash-run">Hash</button>
+          <button class="btn btn-small" data-action="copy" data-target="hashOutput">Salin</button>
+        </div>
+        <pre id="hashOutput" class="output"></pre>
+      </article>
+
+      <!-- UUID -->
+      <article class="tool-card" id="tool-uuid">
+        <h3>UUID Generator</h3>
+        <p class="tool-desc">Buat UUID v4 acak, satu atau banyak.</p>
+        <div class="row">
+          <label>Jumlah:
+            <select id="uuidCount">
+              <option value="1">1</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+            </select>
+          </label>
+          <button class="btn btn-small btn-primary" data-action="uuid-run">Generate</button>
+          <button class="btn btn-small" data-action="copy" data-target="uuidOutput">Salin</button>
+        </div>
+        <pre id="uuidOutput" class="output"></pre>
+      </article>
+
+      <!-- Timestamp -->
+      <article class="tool-card" id="tool-timestamp">
+        <h3>Timestamp Converter</h3>
+        <p class="tool-desc">Unix timestamp ↔ tanggal &amp; waktu.</p>
+        <div class="row">
+          <input id="tsInput" type="text" placeholder="Contoh: 1793126400" spellcheck="false">
+          <button class="btn btn-small btn-primary" data-action="ts-to-date">→ Tanggal</button>
+          <button class="btn btn-small" data-action="ts-now">Sekarang</button>
+        </div>
+        <div class="row">
+          <input id="tsDateInput" type="datetime-local">
+          <button class="btn btn-small btn-primary" data-action="ts-to-unix">→ Unix</button>
+        </div>
+        <pre id="tsOutput" class="output"></pre>
+      </article>
+
+      <!-- JWT -->
+      <article class="tool-card" id="tool-jwt">
+        <h3>JWT Decoder</h3>
+        <p class="tool-desc">Baca isi header &amp; payload token JWT. Tidak memverifikasi signature.</p>
+        <textarea id="jwtInput" rows="4" spellcheck="false" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IlNhcmkifQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"></textarea>
+        <div class="row">
+          <button class="btn btn-small btn-primary" data-action="jwt-decode">Decode</button>
+          <button class="btn btn-small" data-action="copy" data-target="jwtOutput">Salin</button>
+        </div>
+        <pre id="jwtOutput" class="output"></pre>
+      </article>
+
+      <!-- Text tools -->
+      <article class="tool-card" id="tool-text">
+        <h3>Text Tools</h3>
+        <p class="tool-desc">Hitung karakter/kata dan ubah kapitalisasi.</p>
+        <textarea id="textInput" rows="4" spellcheck="false" placeholder="Tulis atau tempel teks di sini..."></textarea>
+        <div class="row">
+          <button class="btn btn-small btn-primary" data-action="text-count">Hitung</button>
+          <button class="btn btn-small" data-action="text-upper">HURUF BESAR</button>
+          <button class="btn btn-small" data-action="text-lower">huruf kecil</button>
+          <button class="btn btn-small" data-action="text-title">Judul Kata</button>
+        </div>
+        <pre id="textOutput" class="output"></pre>
+      </article>
+
+      <!-- Lorem -->
+      <article class="tool-card" id="tool-lorem">
+        <h3>Lorem Ipsum</h3>
+        <p class="tool-desc">Teks pengisi untuk mockup &amp; desain.</p>
+        <div class="row">
+          <label>Paragraf:
+            <select id="loremCount">
+              <option value="1">1</option>
+              <option value="3" selected>3</option>
+              <option value="5">5</option>
+            </select>
+          </label>
+          <button class="btn btn-small btn-primary" data-action="lorem-run">Generate</button>
+          <button class="btn btn-small" data-action="copy" data-target="loremOutput">Salin</button>
+        </div>
+        <pre id="loremOutput" class="output"></pre>
+      </article>
+
+      <!-- Password -->
+      <article class="tool-card" id="tool-password">
+        <h3>Password Generator</h3>
+        <p class="tool-desc">Password acak yang kuat, dibuat lokal di browser.</p>
+        <div class="row">
+          <label>Panjang: <span id="pwLenLabel">16</span>
+            <input id="pwLength" type="range" min="8" max="64" value="16">
+          </label>
+        </div>
+        <div class="row checkboxes">
+          <label><input type="checkbox" id="pwUpper" checked> A-Z</label>
+          <label><input type="checkbox" id="pwLower" checked> a-z</label>
+          <label><input type="checkbox" id="pwDigits" checked> 0-9</label>
+          <label><input type="checkbox" id="pwSymbols" checked> !@#$%</label>
+        </div>
+        <div class="row">
+          <button class="btn btn-small btn-primary" data-action="pw-run">Generate</button>
+          <button class="btn btn-small" data-action="copy" data-target="pwOutput">Salin</button>
+        </div>
+        <pre id="pwOutput" class="output"></pre>
+        <div id="pwStrength" class="strength"></div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section wrap about">
+    <h2>Tentang Alfonodes</h2>
+    <p>Alfonodes adalah ruang kerja Alfonova — security researcher &amp; builder. Playground dan tools di halaman ini gratis dipakai siapa saja, dan semuanya berjalan di sisi klien: tidak ada akun, tidak ada pelacakan, tidak ada data yang keluar dari browser kamu.</p>
+    <p>Proyek: <a href="https://github.com/Alfonova-Node" target="_blank" rel="noopener">github.com/Alfonova-Node</a> · X: <a href="https://x.com/Locoo221" target="_blank" rel="noopener">@Locoo221</a></p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 Alfonodes — dibuat dengan ♥ dan JavaScript</span>
+    <span class="dim">v1.0 · semua tools client-side</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
